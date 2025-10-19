@@ -1,0 +1,33 @@
+name: Deploy Website
+
+# ---------------------------
+# กำหนดให้ Workflow ทำงานอัตโนมัติ
+# เมื่อมีการ push โค้ดไปที่ branch main
+# ---------------------------
+on:
+push:
+branches: [ main ]
+
+jobs:
+build-and-deploy:
+runs-on: ubuntu-latest # ใช้เครื่องจำลองระบบปฏิบัติการ Ubuntu
+
+steps:
+# ขั้นตอนที่ 1: ดึงโค้ดจาก repository มาทำงาน
+- name: Checkout Repository
+uses: actions/checkout@v4
+
+# ขั้นตอนที่ 2: ตรวจสอบความถูกต้องของ HTML (optional)
+- name: Validate HTML
+uses: davidanson/html-validator-action@v1
+with:
+path: .
+
+# ขั้นตอนที่ 3: Deploy ไปยัง Cloudflare Pages
+- name: Deploy to Cloudflare Pages
+uses: cloudflare/pages-action@v1
+with:
+apiToken: ${{ secrets.CF_API_TOKEN }} # โทเคนจาก Cloudflare
+accountId: ${{ secrets.CF_ACCOUNT_ID }} # หมายเลขบัญชี Cloudflare
+projectName: student-resume # ชื่อ Project ต้องตรงกับใน Cloudflare Pages
+directory: ./ # ที่อยู่ไฟล์เว็บ (โฟลเดอร์ปัจจุบัน)
