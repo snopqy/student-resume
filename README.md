@@ -13,3 +13,5 @@
 
 ## การดีพลอย
 ใช้ Cloudflare Pages + GitHub Actions ดูไฟล์ `.github/workflows/deploy.yml`
+URL: https://student-resume-cwu.pages.dev/
+
