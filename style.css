@@ -1,158 +1,278 @@
-:root {
-  --bg: #fffafc;          /* พื้นหลังชมพูอ่อนมาก */
-  --surface: #ffffff;      /* พื้นการ์ด */
-  --text: #4a4a4a;         /* ตัวอักษรเทาเข้ม อ่านง่าย */
-  --accent: #f472b6;       /* ชมพูพาสเทล (main accent) */
-  --accent-light: #fce7f3; /* ชมพูอ่อนสำหรับพื้น */
-  --muted: #9ca3af;        /* สีข้อความรอง */
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - มินิมอลชมพู</title>
+  <style>
+    :root {
+      --bg: #fffafc;
+      --surface: #ffffff;
+      --text: #4a4a4a;
+      --accent: #f472b6;
+      --accent-light: #fce7f3;
+      --muted: #9ca3af;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 780px;
+      background: var(--surface);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(244, 114, 182, 0.1);
+      padding: 40px 40px 60px;
+      text-align: left;
+      width: 100%;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    #profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      background: var(--accent-light);
+      margin: 0 auto 16px;
+      display: block;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: var(--muted);
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+
+    nav {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    nav a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      margin: 0 12px;
+      font-size: 1.05rem;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* หัวข้อใหญ่แต่ละส่วน */
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      border-bottom: 3px solid var(--accent-light);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      margin-top: 40px;
+    }
+
+    /* เนื้อหาภายในแต่ละส่วน */
+    .section-content {
+      margin-bottom: 30px;
+      line-height: 1.6;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    /* รายการแบบ bullet แบบ chip */
+    .chip-list {
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .chip-list li {
+      background: var(--accent-light);
+      color: var(--accent);
+      padding: 8px 16px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* การ์ดแต่ละรายการ เช่น ประสบการณ์ หรือ การศึกษา */
+    .card {
+      background: var(--accent-light);
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 20px;
+      border: 1px solid #f9c4db;
+    }
+
+    .card h3 {
+      margin-bottom: 6px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .card p {
+      margin-bottom: 6px;
+      font-size: 1rem;
+      color: var(--text);
+    }
+
+    .card small {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* ปุ่ม */
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      background: var(--accent);
+      color: white;
+      border-radius: 12px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: #ec4899;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .container {
+        padding: 30px 20px 40px;
+      }
+
+      nav a {
+        margin: 0 8px;
+      }
+
+      h2 {
+        font-size: 1.3rem;
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <main class="container">
+
+    <header>
+      <img id="profile-img" src="https://via.placeholder.com/140" alt="Profile Image" />
+      <h1>ชื่อของคุณ</h1>
+      <p>ตำแหน่งงานหรือคำอธิบายสั้น ๆ ของคุณ</p>
+    </header>
+
+    <nav>
+      <a href="#about">เกี่ยวกับฉัน</a>
+      <a href="#skills">ทักษะ</a>
+      <a href="#experience">ประสบการณ์</a>
+      <a href="#education">การศึกษา</a>
+      <a href="#contact">ติดต่อ</a>
+    </nav>
+
+    <section id="about">
+      <h2>เกี่ยวกับฉัน</h2>
+      <div class="section-content">
+        <p>ฉันเป็นนักพัฒนาที่หลงใหลในการสร้างเว็บไซต์ที่สวยงามและใช้งานง่าย โดยเน้นความเรียบง่ายและดีไซน์ที่สะอาดตา</p>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2>ทักษะ</h2>
+      <ul class="chip-list">
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+        <li>React</li>
+        <li>Git</li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>ประสบการณ์</h2>
+      <div class="card">
+        <h3>นักพัฒนาซอฟต์แวร์ - บริษัท ABC</h3>
+        <small>ม.ค. 2022 - ปัจจุบัน</small>
+        <p>พัฒนาเว็บไซต์และแอปพลิเคชันโดยใช้ React และ Node.js</p>
+      </div>
+      <div class="card">
+        <h3>ผู้ช่วยนักพัฒนา - บริษัท XYZ</h3>
+        <small>มิ.ย. 2020 - ธ.ค. 2021</small>
+        <p>ช่วยทีมพัฒนาเว็บโปรเจ็กต์ และดูแลการทดสอบระบบ</p>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2>การศึกษา</h2>
+      <div class="card">
+        <h3>ปริญญาตรี วิทยาการคอมพิวเตอร์</h3>
+        <small>มหาวิทยาลัยตัวอย่าง, 2016 - 2020</small>
+        <p>จบด้วยเกรดเฉลี่ย 3.75</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>ติดต่อ</h2>
+      <div class="section-content">
+        <p>อีเมล: your.email@example.com</p>
+        <p>โทร: 012-345-6789</p>
+        <a href="mailto:your.email@example.com" class="btn">ส่งข้อความ</a>
+      </div>
+    </section>
+
+    <footer>
+      <p>© 2025 ชื่อของคุณ - สร้างด้วย ❤️ และมินิมอลชมพู</p>
+    </footer>
+
+  </main>
+
+</body>
+</html>
+
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html, body {
-  height: 100%;
-  font-family: "Inter", "Segoe UI", system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* กล่องหลักตรงกลาง */
-.container {
-  background: var(--surface);
-  border: 1px solid #f3f4f6;
-  border-radius: 20px;
-  padding: 40px;
-  width: 90%;
-  max-width: 780px;
-  box-shadow: 0 8px 25px rgba(244, 114, 182, 0.1);
-  text-align: center;
-}
-
-/* ส่วนหัว */
-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 24px;
-}
-
-#profile-img {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  border: 3px solid var(--accent);
-  object-fit: cover;
-  background: var(--accent-light);
-  margin-bottom: 16px;
-}
-
-header h1 {
-  font-size: 1.8rem;
-  font-weight: 700;
-  margin-bottom: 6px;
-}
-
-header p {
-  color: var(--muted);
-  font-size: 1rem;
-  margin-bottom: 16px;
-}
-
-/* ลิงก์นำทาง */
-nav a {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  margin: 0 8px;
-  font-size: 1rem;
-}
-
-nav a:hover {
-  text-decoration: underline;
-}
-
-/* หัวข้อแต่ละส่วน */
-h2 {
-  font-size: 1.3rem;
-  border-bottom: 2px solid var(--accent-light);
-  padding-bottom: 6px;
-  margin: 28px 0 12px;
-  text-align: left;
-}
-
-/* รายการทักษะ */
-.chip-list {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
-  padding: 0;
-}
-
-.chip-list li {
-  background: var(--accent-light);
-  color: var(--text);
-  border-radius: 999px;
-  padding: 8px 14px;
-  font-size: 0.9rem;
-}
-
-/* การ์ดเนื้อหา */
-.card {
-  background: var(--accent-light);
-  border: 1px solid #fbcfe8;
-  border-radius: 16px;
-  padding: 16px 20px;
-  text-align: left;
-  margin: 12px 0;
-}
-
-/* ปุ่ม */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 20px;
-  background: var(--accent);
-  color: #fff;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-.btn:hover {
-  background: #ec4899;
-  transform: translateY(-2px);
-}
-
-/* ส่วนท้าย */
-footer {
-  margin-top: 28px;
-  font-size: 0.9rem;
-  color: var(--muted);
-}
-
-/* Responsive */
-@media (max-width: 640px) {
-  .container {
-    padding: 28px 20px;
-  }
-
-  h2 {
-    text-align: center;
-  }
-
-  .card {
-    text-align: center;
-  }
-}
 
