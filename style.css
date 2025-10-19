@@ -8,11 +8,12 @@ body {
   justify-content: center;
   height: 100vh;
   margin: 0;
+  text-align: center;
 }
 
 /* จัดการ header */
 header {
-  text-align: center;
+  margin-bottom: 40px;
 }
 
 /* จัดตำแหน่งและระยะห่างของส่วนต่างๆ */
@@ -20,6 +21,7 @@ section {
   margin: 20px 0;
   width: 80%;
   max-width: 800px;
+  text-align: center; /* ข้อความใน section ให้อยู่กลาง */
 }
 
 /* ทำให้หัวข้ออยู่กลาง */
@@ -31,6 +33,9 @@ h1, h2 {
 ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 li {
@@ -39,11 +44,16 @@ li {
 
 /* ปรับสไตล์ให้ดูเรียบง่าย */
 p {
-  text-align: center;
   font-size: 1.1rem;
 }
 
+/* เพิ่มระยะห่างในส่วนของทักษะ */
+#skills ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-</body>
 </html>
+
 
